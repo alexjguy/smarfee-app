@@ -1,0 +1,56 @@
+<!--
+  Generated template for the Feeders page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+      AI Feeder
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="addFeeder()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      <h1>Smart Feeder</h1>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <button ion-button icon-right block>
+              Feed Now
+              <ion-icon name="nutrition"></ion-icon>
+            </button>
+          </ion-col>
+          <ion-col>
+            <button ion-button icon-right block color="dark" outline>
+              Configure
+              <ion-icon name="settings"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
