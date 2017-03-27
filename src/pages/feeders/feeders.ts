@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import {AddFeederWifiPage} from '../add-feeder-wifi/add-feeder-wifi'
+import { AddFeederWifiPage } from '../add-feeder-wifi/add-feeder-wifi'
+import { DBService } from "../../services/db.service";
 
 @Component({
   selector: 'page-feeders',
@@ -9,14 +10,16 @@ import {AddFeederWifiPage} from '../add-feeder-wifi/add-feeder-wifi'
 export class FeedersPage {
 
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController,
+    private dbService: DBService) {
   };
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FeedersPage');
+    this.dbService.dbConnect();
   };
 
-  addFeeder(){
+  addFeeder() {
     this.navCtrl.push(AddFeederWifiPage);
   };
 

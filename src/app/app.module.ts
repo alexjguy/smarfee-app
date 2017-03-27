@@ -10,10 +10,14 @@ import { SignupPage} from '../pages/signup/signup';
 import {FeederInternalService} from "../services/feeder.internal.service";
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 import {AuthService} from "../services/auth.service";
+import {DBService} from "../services/db.service";
 
 const cloudSettings: CloudSettings = {
   'core': {
     'app_id': '2eaed8c5'
+  },
+    'database': {
+    'authType': 'authenticated'
   }
 };
 
@@ -43,6 +47,6 @@ const cloudSettings: CloudSettings = {
     AddFeederWifiPage
 
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, FeederInternalService, AuthService]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, FeederInternalService, AuthService, DBService]
 })
 export class AppModule {}

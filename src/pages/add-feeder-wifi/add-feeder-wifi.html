@@ -6,19 +6,44 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>add-feeder-wifi</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>Configure Wifi</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <ion-list>
-    <ion-item *ngFor="let wifiName of wifiNameList">
-      <h2>{{wifiName}}</h2>
-    </ion-item>
-  </ion-list>
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <ion-list>
+            <ion-item *ngIf="wifiNameList">
+                <ion-label>Specify a WiFi name manually?</ion-label>
+                <ion-toggle [(ngModel)]="specificWifi" name="specificWifi" checked=false>
 
-
+                </ion-toggle>
+            </ion-item>
+            <ion-list radio-group [(ngModel)]="details.wifiName" name="specificWifiSel">
+                <ion-item *ngFor="let wifiName of wifiNameList">
+                    <ion-label>{{wifiName}}</ion-label>
+                    <ion-radio [value]="wifiName" [disabled]="specificWifi"></ion-radio>
+                </ion-item>
+            </ion-list>
+            <ion-item *ngIf="!wifiNameList">
+                <ion-label color="danger">No wifi found, please specify a wifi manually</ion-label>
+            </ion-item>
+            <ion-item *ngIf="(specificWifi==true||!wifiNameList)||specificWifi==true" [ngModel]>
+                <ion-label floating>
+                    <p>Wifi Access Point Name</p>
+                </ion-label>
+                <ion-input [(ngModel)]="details.wifiName" type="text" name="wifiSSID"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>
+                    <p>Password</p>
+                </ion-label>
+                <ion-input type="password" [(ngModel)]="details.wifiPassword" name="wifiPassword" required></ion-input>
+            </ion-item>
+            <button ion-button block type="submit" [disabled]="!f.valid">Connect feeder to wifi</button>
+        </ion-list>
+    </form>
 </ion-content>

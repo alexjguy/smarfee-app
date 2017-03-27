@@ -18,7 +18,7 @@ export class SignupPage {
     const loading = this.loadingCtrl.create({
       content: 'Signing you up..'
     });
-    loading.present()
+    loading.present();
     this.authService.signup(form.value.email, form.value.password)
       .then(
         data => {
