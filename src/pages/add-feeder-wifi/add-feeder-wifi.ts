@@ -115,8 +115,8 @@ export class AddFeederWifiPage implements OnInit {
         loading.dismiss();
         this.feeder = this.getSettings();
         console.log(JSON.stringify(this.feeder));
-        this.dbService.dbConnect();
-        this.dbService.addFeeder(this.feeder);
+       // this.dbService.dbConnect();
+       // this.dbService.addFeeder(this.feeder);
         this.navCtrl.popToRoot();
 
       },
