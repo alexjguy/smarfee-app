@@ -10,6 +10,8 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: 'feeders.html'
 })
 export class FeedersPage {
+  public feeders: any[] = [];
+  public test: any;
 
 
   constructor(public navCtrl: NavController,
@@ -25,6 +27,8 @@ export class FeedersPage {
         console.log(token);
       }
       );
+      this.dbService.getFeeders();
+
   };
 
   addFeeder() {

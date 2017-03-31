@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FeederInternalService } from "../../services/feeder.internal.service";
 import { DBService } from "../../services/db.service";
+import {AuthService} from "../../services/auth.service";
 import 'rxjs/Rx';
 import { LoadingController, AlertController, NavController } from 'ionic-angular';
 import { NgForm } from "@angular/forms";
@@ -18,11 +19,13 @@ export class AddFeederWifiPage implements OnInit {
   private details: any = {};
   private feeder: any;
 
+
   constructor(private feederInternalService: FeederInternalService,
     private loadingCtrl: LoadingController,
     private alertCtrl: AlertController,
     private navCtrl: NavController,
-    private dbService: DBService) {
+    private dbService: DBService,
+    private authService: AuthService) {
   }
 
   populateWifi() {
@@ -105,6 +108,8 @@ export class AddFeederWifiPage implements OnInit {
   };
 
   configureWifi() {
+    this.details['uid'] = this.authService.getActiveUserUid();
+
     const loading = this.loadingCtrl.create({
       content: 'Configuring feeder..'
     });
@@ -115,8 +120,8 @@ export class AddFeederWifiPage implements OnInit {
         loading.dismiss();
         this.feeder = this.getSettings();
         console.log(JSON.stringify(this.feeder));
-       // this.dbService.dbConnect();
-       // this.dbService.addFeeder(this.feeder);
+        // this.dbService.dbConnect();
+        // this.dbService.addFeeder(this.feeder);
         this.navCtrl.popToRoot();
 
       },

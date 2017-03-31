@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import firebase from 'firebase';
+import {initializeApp, database, auth} from 'firebase';
 
 @Injectable()
 export class AuthService {
@@ -21,6 +21,10 @@ export class AuthService {
 
   getActiveUser() {
     return firebase.auth().currentUser;
+  }
+
+  getActiveUserUid(){
+    return this.getActiveUser().uid;
   }
 
 }
