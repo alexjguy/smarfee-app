@@ -24,7 +24,8 @@ export class MyApp {
     private authService: AuthService) {
     firebase.initializeApp({
       apiKey: "AIzaSyAgxJBjygVzP9mwSzz0PvyYnAUDEXUdQhs",
-      authDomain: "ai-feeder-app.firebaseapp.com"
+      authDomain: "ai-feeder-app.firebaseapp.com",
+      databaseURL: "https://ai-feeder-app.firebaseio.com"
     });
     firebase.auth().onAuthStateChanged(user => {
       if (user) {

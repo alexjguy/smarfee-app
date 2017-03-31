@@ -25,9 +25,10 @@ export class FeedersPage {
       .then(
       (token: string) => {
         console.log(token);
+        this.dbService.getFeeders(token);
+
       }
       );
-      this.dbService.getFeeders();
 
   };
 
