@@ -12,6 +12,6 @@ pipelines:
           - cat /root/.ssh/config
           - echo "Host git-codecommit.*.amazonaws.com" > /root/.ssh/config
           - echo "  User APKAJWBWPMENJGFG4ZSQ" >> /root/.ssh/config
-          - echo "  IdentityFile ~/.ssh/id_rsa" >> /root/.ssh/config
+          - echo "  IdentityFile /opt/atlassian/pipelines/agent/data/id_rsa" >> /root/.ssh/config
           - git clone ssh://git-codecommit.us-east-2.amazonaws.com/v1/repos/newrepo
           #- git push aws --mirror
