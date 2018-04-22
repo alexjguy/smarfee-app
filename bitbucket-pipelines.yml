@@ -13,10 +13,5 @@ pipelines:
           - echo "Host git-codecommit.*.amazonaws.com" > /root/.ssh/config
           - echo "  User APKAJWBWPMENJGFG4ZSQ" >> /root/.ssh/config
           - echo "  IdentityFile ~/.ssh/id_rsa" >> /root/.ssh/config
-          - cat /root/.aws/credentials
-          - git credential-cache exit
-          - git config --global credential.helper '!aws codecommit credential-helper $@'
-          - git config --global credential.UseHttpPath true
-          - cat /root/.gitconfig
-          - git clone ${AWS_GIT_HTTPS_URL}
+          - git clone ssh://git-codecommit.us-east-2.amazonaws.com/v1/repos/newrepo
           #- git push aws --mirror
