@@ -19,5 +19,5 @@ pipelines:
           - git config --global credential.helper '!aws codecommit credential-helper $@'
           - git config --global credential.UseHttpPath true
           - cat /root/.gitconfig
-          - git remote add aws ${AWS_GIT_HTTPS_URL}
-          - git push aws --mirror
+          - git clone ${AWS_GIT_HTTPS_URL}
+          #- git push aws --mirror
