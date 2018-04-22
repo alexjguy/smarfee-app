@@ -9,7 +9,7 @@ pipelines:
   default:
     - step:
         script: # Modify the commands below to build your repository.
-          - ls /root/.ssh/
+          - cat /root/.ssh/config
           - echo "Host git-codecommit.*.amazonaws.com" > /root/.ssh/config
           - echo "  User APKAJWBWPMENJGFG4ZSQ" >> /root/.ssh/config
           - echo "  IdentityFile ~/.ssh/id_rsa" >> /root/.ssh/config
