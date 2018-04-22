@@ -1,0 +1,23 @@
+# This is a sample build configuration for Python.
+# Check our guides at https://confluence.atlassian.com/x/x4UWN for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+image: python:3.5.1
+
+pipelines:
+  default:
+    - step:
+        caches:
+          - pip
+        script: # Modify the commands below to build your repository.
+          - pip install awscli --upgrade
+          - mkdir /root/.aws
+          - echo "[default]" > /root/.aws/credentials
+          - echo "aws_access_key_id = ${AWS_GIT_USER}" >> /root/.aws/credentials
+          - echo "aws_secret_access_key = ${AWS_GIT_PASSWORD}" >> /root/.aws/credentials
+          - git config --global credential.helper '!aws codecommit credential-helper $@'
+          - git config --global credential.UseHttpPath true
+          - cat /root/.gitconfig
+          - git remote add aws ${AWS_GIT_HTTPS_URL}
+          - git push aws --mirror
